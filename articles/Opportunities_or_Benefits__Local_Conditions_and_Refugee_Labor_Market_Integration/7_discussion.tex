@@ -1,0 +1,42 @@
+\FloatBarrier
+\section{\label{sec:discussion}Discussion}
+
+Several additional considerations are important for interpreting our findings, particularly regarding the timing of our analysis, the temporal horizon of welfare benefits, and the impact of housing policies.
+
+One insight from this paper is that regional differences in welfare generosity and labor market tightness at the time of protection—when refugees are particularly mobile—explain only a minor share of the observed variation in the propensity to move to Vienna (see Figure \ref{fig:movermatrix}). It is beyond the scope of this paper to assess the relative importance of other factors, but we would like to mention some candidates. One potentially important aspect is variation in housing policy. Federal states adopt very different approaches to supporting refugees with housing after they receive protection, and some evidence suggests that these differences are correlated with outmigration to Vienna \citep{Dellinger2021Housing}.
+
+There is also a clear east–west gradient: migration to Vienna is more common among refugees initially placed in eastern states, which are geographically closer to Vienna. While labor market conditions in the east are generally less favorable than in the west, our results suggest that these differences are not large enough to fully explain the observed migration patterns. Refugees in eastern regions likely face fewer barriers—both in terms of distance and cost, including through network effects—when considering a move to Vienna.
+
+While a portion of our outcome window extends into the period affected by the COVID-19 pandemic, this does not compromise the internal validity of our results. By controlling for the exact timing of protection status in our empirical strategy, we account for all macro-level temporal shocks, including those related to the pandemic. It remains possible, however, that the pandemic may affect the external validity of our findings; outcomes might differ if the analysis were conducted in a different period or under different macroeconomic conditions. Importantly, it should be emphasized that the pandemic does not influence our estimates for the first 12 months after protection—the period where most of the observed effects occur—since our treatment window concludes in 2018. Thus, the core short-term results are entirely unaffected by pandemic-related developments.
+
+The interpretation of our estimated effect sizes requires consideration of the variation in exposure to the policy change. Refugees living in private accommodation are directly affected by the reduction in benefit levels, as they experience immediate changes in disposable income. By contrast, individuals in organized accommodation receive almost all support in-kind. They are therefore not directly impacted by the reform, although the prospect of lower benefits if they consider moving to private accommodation makes staying in the state less appealing. As we do not observe the type of accommodation at the individual level, our analysis necessarily mixes these types of exposure. Based on official statistics from the Grundversorgungsdatenbank,\footnote{See \url{https://www.migration-infografik.at/gvs-statistiken-2018}, retrieved July 30, 2025.} approximately 35\% of subsidiary-protected individuals outside Vienna reside in private accommodation. If we treat refugees in organized accommodation as fully unresponsive to benefit cuts---a strong assumption given the indirect channel just noted---our estimates for subsidiary-protected refugees scale by roughly a factor of three. This rescaling is therefore best read as a suggestive upper bound on the ATT for those directly exposed, since the in-kind group is unlikely to be entirely unaffected. For example, our standardized effect of a €300 reduction in benefit levels on the probability of staying in the assigned state for subsidiary-protected refugees is about -2.8 pp. at month 12; multiplying by three yields an ATT of -8.4 pp. The corresponding ATT for employment in month 12 is estimated at -4.5 pp. 
+
+\textbf{Policy Simulation}
+\FloatBarrier
+
+We also use our estimates to conduct back-of-the-envelope simulations of two hypothetical policies by predicting the outcomes for specified IPBL levels.
+
+First, we assess the effect of setting benefit levels in all federal states equal to those in Vienna. Panel (a) of Table~\ref{tab:simulation} presents these results. This policy would slightly reduce employment rates after twelve months but has no effect after 60 months. It would lower the share of subsidiary-protected individuals who initially lived outside Vienna and later moved to Vienna by about two percentage points, while having almost no effect on Convention refugees, whose benefit levels were already more uniform across states.
+
+Second, we assess the impact of aligning benefit levels for subsidiary-protected individuals with those of Convention refugees within each state. This policy — affecting only the subsidiary-protected — would reduce the employment rate by 1.1 pp. twelve months after protection and decrease the likelihood of moving to Vienna by slightly less than two percentage points (see Panel (b)).
+
+\begin{table}
+	\caption{Counterfactual results of various IPBL levels on employment and mobility}\label{tab:simulation}
+	\begin{threeparttable}
+		%\begin{small}
+			%\begin{tabular}{lcccc}				
+            \input{tables/policy_simulation}
+			%\end{tabular}
+		%\end{small}
+		\begin{tablenotes} 
+			\begin{footnotesize}
+				\begin{spacing}{1}
+					\textit{Notes:} The table shows counterfactual predictions for employment and residency in Vienna under alternative IPBL scenarios. In Scenario a, we set the IPBL levels for all protection types in each state to match the corresponding Vienna levels of each year. Column ``Base'' shows the baseline predictions for employment and staying in Vienna from our main specification. Column ``CF'' shows the counterfactual shares under the policy change. 
+                    In Scenario b, we adjust the IPBL levels for subsidiary-protected refugees to equal those of Convention refugees within the same state and year. The sample includes only refugees who received protection in 2017.  
+				\end{spacing}
+			\end{footnotesize}
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+\FloatBarrier

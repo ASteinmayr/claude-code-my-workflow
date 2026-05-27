@@ -1,0 +1,19 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.xdv
+
+# Compiled PDFs (rebuild from source)
+0_master.pdf
+0_master_AS.pdf
+
+# But track figures (they are source, not build output)
+!figures/
+!figures/**/*.pdf

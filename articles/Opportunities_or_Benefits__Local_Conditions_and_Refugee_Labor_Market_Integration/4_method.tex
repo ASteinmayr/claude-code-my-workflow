@@ -1,0 +1,81 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% METHOD   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\FloatBarrier
+\section{Empirical Approach} \label{sec:empirics}
+
+In an ideal experiment to understand the impact of two treatments and their interaction, one would randomize the receipt of those two treatments. However, such randomization is conceptually not feasible in our context. While it is conceivable to assign benefit generosity, labor demand, driven by the economy's evolution, cannot be manipulated in the same manner. Therefore, we must conceptualize treatment assignments differently. Rather than assigning treatments to individuals, we allocate individuals to treatments based on their location, timing, protection status and family status. Each combination of place, time, and status cells comes with values for the treatment variables, $IVUR$ and $IPBL$.
+
+Approaching identification from this angle requires separately thinking about two levels of identifying assumptions. First, are individuals exogenously assigned to cells? Second, are there other characteristics of these cells that are correlated with the value of the treatment variables also affecting the outcomes and thus confounding the analysis?
+
+Subsequently, we describe our empirical strategy that seeks to address both levels of the identification problem. We start with a description of the econometric specification and subsequently explain how this specification is linked to our identification problem.
+
+\subsection{Econometric specification} \label{sec:specification}
+
+The essence of our empirical strategy is to exploit exogenous variation in the initial local labor market conditions and welfare benefit generosity that refugees face at the time and place of protection. For each individual $i$, we denote the time of protection as $t^0(i)$, the district of residence at protection as $d^0(i)$, and the state at protection as $s^0(i)$. Both the initial vacancy-to-unemployment ratio ($IVUR_{d^0(i), m^0(i)}$) and the initial potential benefit level ($IPBL_{p(i), f(i), s^0(i), m^0(i)}$) are measured for the district or state and month of protection. Here, $p(i)$ denotes protection type, $f(i)$ family status, and $m^0(i)$ the calendar month of protection. 
+
+Outcomes $Y_{i d(t) t}$ are measured at time $t$ for the location where the individual resides at $t$, which may differ from the initial location. All fixed effects for the month-year of protection, arrival group, and district of residence at protection are allowed to vary by the outcome period. This specification ensures that all group and contextual adjustments are flexibly modeled for each time horizon. Crucially, $IVUR$ and $IPBL$ are fixed at the protection-date values for the entire 60-month outcome window, so $\beta_{1,t}$ and $\beta_{2,t}$ at long horizons identify the effect of \emph{initial} conditions on later outcomes, not the effect of the contemporaneous labor market or benefit regime that a relocated refugee may no longer face.
+
+Formally, the primary specification estimated for each outcome period $t$ is:
+
+%\begin{equation}
+\begin{align}\label{eq:main}
+Y_{i d(t) t} =\ & \alpha_t + \beta_{1,t}\ IVUR_{d^0(i), m^0(i)} + \beta_{2,t}\ IPBL_{p(i), f(i), s^0(i), m^0(i)} \notag \\
+& +\ \gamma_{m^0(i), t} + \delta_{g(i), t} + \eta_{d^0(i), t} + X_i'\Gamma_t + \epsilon_{i d(t) t}
+\end{align}
+%\end{equation}
+
+where $Y_{i d(t) t}$ denotes the outcome for individual $i$ observed at time $t$, in the current district $d(t)$. $IVUR_{d^0(i), m^0(i)}$ and $IPBL_{p(i), f(i), s^0(i), m^0(i)}$ capture initial conditions at the time and place of protection. $\gamma_{m^0(i), t}$, $\delta_{g(i), t}$, and $\eta_{d^0(i), t}$ denote fixed effects for the month-year of protection, arrival group, and district at time of protection, all specific to outcome period $t$. $X_i$ is a vector of time-invariant individual controls, including age at immigration and its square, type of protection status, country of origin, and eligibility for family benefits, and $\epsilon_{i d(t) t}$ denotes the error term. 
+
+\subsection{Identification strategy} \label{identification}
+
+Identification of the $IVUR$ and $IPBL$ effects in Equation \ref{eq:main} rests on two conditional independence assumptions. Conditional on arrival-group, month-year-of-protection, and district-of-protection fixed effects ($\delta_{g(i),t}$, $\gamma_{m^0(i),t}$, $\eta_{d^0(i),t}$) together with our individual controls $X_i$, we assume that (i) $IVUR_{d^0(i), m^0(i)}$ is mean-independent of the outcome residual, and (ii) the same holds for $IPBL_{p(i), f(i), s^0(i), m^0(i)}$. Sections \ref{identification_cells} and \ref{identification_treatments} justify these assumptions in turn.
+
+\subsubsection{Assignment to location-time-protection status-cells} \label{identification_cells}
+
+First, we consider the allocation of refugees to the districts where they reside when receiving protection. This is the district where they get access to the Austrian labor market and that determines under which state's welfare regime they initially fall. As explained in Section \ref{sec:allocation}, municipalities might indicate preferences regarding the characteristics of asylum-seekers they can host. Thus, we expect systematic differences in the characteristics of refugees between municipalities. We address this issue by implementing arrival-group fixed effects $\delta_g$. Within groups of people of the same gender who arrived in Austria in the same quarter, were initially registered in the same state, and arrived alone or as a family, the assignment to municipalities depends on the next available housing unit at that point in time. Thus, within arrival groups, it is a haphazard process to determine which asylum-seeker goes to which municipality. Further, asylum-seekers are effectively banned from relocating to another state as they would lose benefits and are mostly unable to relocate within a state due to financial constraints.\footnote{The basic subsistence support usually provides housing in organized accommodations. In the case of independent relocation to private housing within the state, asylum-seekers only receive a small monthly compensation, which is usually insufficient to pay for rent.} Given these constraints, conditional on the arrival group, denoted as $\delta_{g}$ in our specifications, asylum-seekers find themselves quasi-randomly assigned to the district where they live when their protection is granted.
+
+The duration until the asylum claim is processed primarily depends on the capacity of the bureaucracy and can barely be influenced by the asylum-seeker. Thus, the specific month-year in which protection is granted is also exogenous, conditional on the arrival group.
+
+$IPBL$ also depends on protection type and family status. Both factors might directly influence our outcomes of interest. Thus, we condition on eligibility for family benefits and protection type to only compare individuals within the respective group.
+
+In sum, asylum-seekers cannot select a district based on perceived labor market prospects or welfare benefits, nor determine the timing of receiving protection. Municipalities can only express preferences over broad characteristics, which is why we seek to make comparisons within arrival groups.
+
+%Hence, any variation in IVURs and IPBLs should stem from local variations in labor market prospects or changes in the state's level of welfare benefits, independent of any choice a refugee might take during the asylum process. If this assumption holds, the $IVUR$ and $IPBL$ a refugee experiences at the date of being granted protection can be seen as random shocks, representing proxies for the local labor market conditions and the local welfare system, respectively.
+
+
+
+\begin{table}
+	\caption{Correlation of initial vacancy-to-unemployment ratio and initial potential benefit level with migrant characteristics}
+	\label{tab:ivur_ipbl_balance}
+ \centering
+	\begin{threeparttable}
+		\begin{small}
+   \centering
+			\begin{tabular}{lcccc}				
+   \input{tables/treatment_characteristics_corr.tex}
+			\end{tabular}
+		\end{small}
+		\begin{tablenotes} 
+			\begin{footnotesize}
+				\begin{spacing}{1}
+					\textit{Notes:} Coefficients from OLS regressions of the $IVUR$ and $IPBL$ at the month of protection on migrant characteristics as well as a full set of district-at-protection, year-month, and country-of-origin fixed effects. $IVUR$ and $IPBL$ are multiplied by 1000 for better depiction. Columns 2 and 4 also include arrival-group fixed effects. The Wald-Test statistics test the full models against a restricted model with i) only fixed effects for the $IVUR$ and ii) fixed effects and dummy variables indicating the type of protection and assumed family status at protection date. Standard errors are clustered at the state-year-of-protection level. */**/*** denote statistical significance at the 10/5/1 percent level.
+				\end{spacing}
+			\end{footnotesize}
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+While we cannot directly ascertain if asylum-seekers could self-select into specific districts or influence the duration of their asylum process, we can investigate if $IVUR$ and $IPBL$ correlate with individual characteristics.
+We achieve this by regressing i) the district-level $IVUR$ and ii) the state-level $IPBL$ on district, month-year of protection, country of origin, and arrival group fixed effects. Additionally, we control for the type of protection and an indicator for family benefit eligibility, which are established confounders for the $IPBL$ since the $IPBL$ varies with protection type and family size.
+
+Columns (1) and (3) of Table~\ref{tab:ivur_ipbl_balance} present the results without arrival group fixed effects, columns (2) and (4) with. All coefficients are close to zero and negligible in magnitude. For example, with arrival group fixed effects, individuals with secondary education face an $IVUR$ of 0.001849 smaller than individuals with primary education. This amounts to roughly one percent of a standard deviation of $IVUR$. Similarly, the coefficient for $IPBL$ suggests that individuals with secondary education face an $IPBL$ that is about four euros lower than individuals with primary education.
+
+The overarching Wald-Tests do not reject the hypotheses that personal characteristics are uncorrelated to $IVUR$ and $IPBL$, with p-values in all specifications being at least 0.59.\footnote{For the $IVUR$, we contrast the model with all presented personal characteristics against the model with only fixed effects. For the $IPBL$, we compare the full model to one that includes only the fixed effects and the known confounders.} Overall, these results support our argument that the placement of asylum-seekers to districts is exogenous.
+
+\subsubsection{Exogeneity of \textit{IVUR} and \textit{IPBL}} \label{identification_treatments}
+
+Second, we consider a possible correlation between $IVUR$ and $IPBL$ and other local characteristics affecting refugees' labor market success. For example, regions with high $IVUR$ and $IPBL$ could also have a more welcoming civil society that helps refugees integrate better. To address this concern, we include district fixed effects $\eta_{d_0}$ that control for all time-constant regional characteristics with constant effects. Controlling for month-year of protection, fixed effects $\gamma_{t_0}$ holds constant all factors that influence all regions in the same way, such as national policy changes. Because $\eta_{d_0}$ absorbs each district's long-run average tightness, the $IVUR$ variation our specification exploits is by construction a within-district deviation: our coefficient $\beta_{1,t}$ identifies responses to transient tightness shocks at the moment of protection, not to differences in average labor-market quality across destinations.
+
+Given these fixed effects, we deem it unlikely that $IVUR$ is confounded by other local factors influencing the outcome. The argument is less clear for $IPBL$. The welfare reforms, which drive most of the variation in benefit levels, might result from a broader change in attitudes towards refugees, which might also affect the outcomes. While we cannot fully rule out this possibility, we argue that we can sign the direction of the resulting bias for each outcome. Districts with higher $IPBL$ are likely to have more pro-refugee attitudes, which themselves may affect refugee outcomes. For the probability of remaining in the initial state, both channels operate in the same direction---pro-refugee attitudes and more generous benefits each encourage staying---so our estimate of the effect of benefits on staying reflects an upper bound (in absolute terms) on the causal effect. For employment, the channels operate in opposite directions: pro-refugee attitudes may raise refugee employment through reduced employer discrimination, partially offsetting the causal effect of more generous benefits (which lowers employment by raising reservation wages); the $IPBL\to$employment estimate therefore reflects a \emph{lower} bound (in absolute terms) on the causal effect.  %To address this concern, we repeat our analysis with a subset of states and time periods where the variation in benefit levels is not related to other policy changes. We show these results in the robustness section. %Furthermore, we provide separate analysis for the individual reforms using event studies. We present these analyses and the corresponding results in Appendix XX (TO BE INCLUDED).

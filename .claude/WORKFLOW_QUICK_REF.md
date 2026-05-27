@@ -48,26 +48,27 @@ Repeat
 
 ---
 
-## Non-Negotiables (Customize These)
+## Non-Negotiables
 
-<!-- Replace with YOUR project's locked-in preferences -->
-
-- [YOUR PATH CONVENTION] (e.g., `here::here()` for R, relative paths for LaTeX)
-- [YOUR SEED CONVENTION] (e.g., `set.seed()` once at top for stochastic code)
-- [YOUR FIGURE STANDARDS] (e.g., white bg, 300 DPI, custom theme)
-- [YOUR COLOR PALETTE] (e.g., institutional colors)
-- [YOUR TOLERANCE THRESHOLDS] (e.g., 1e-6 for point estimates)
+- **R paths:** plain relative paths (`../data/raw/file.csv`, `../scripts/R/02_clean.R`). No `here::here()`, no absolute paths. Scripts must be runnable from `scripts/R/`.
+- **R seeds:** `set.seed(83)` exactly once at the top of every script using randomness; never inside loops or functions (INV-9).
+- **R figures:** transparent background, explicit width/height, custom `theme_custom()` on every committed ggplot (INV-11/12). Theme function definition deferred — fill in when first figure script is written.
+- **R numerics:** no float equality, CDF clamping with `eps = 1e-12`, integer literals for counts. See `r-code-conventions.md` §8.
+- **Replication tolerance:** point estimates `1e-4`, standard errors `1e-3`. **Strict near-miss policy** — any result within 10% of tolerance is flagged for investigation, not silently accepted.
+- **LaTeX/Beamer:** XeLaTeX 3-pass via `/compile-latex`; no `\pause` / overlays (INV-6); max 2 colored boxes per slide (INV-7).
+- **Beamer ↔ Quarto:** Beamer is authoritative; sync to Quarto in the same task; notation identical (INV-2).
+- **Palette:** LaTeX + SCSS must agree (INV-1). Verify with `./scripts/check-palette-sync.sh`.
+- **Bibliography:** one canonical file `Bibliography_base.bib` (INV-5).
 
 ---
 
 ## Preferences
 
-<!-- Fill in as you discover your working style -->
-
-**Visual:** [How you want figures/plots handled]
-**Reporting:** [Concise bullets? Detailed prose? Details on request?]
-**Session logs:** Always (post-plan, incremental, end-of-session)
-**Replication:** [How strict? Flag near-misses?]
+**Visual:** transparent ggplot backgrounds; institutional palette in figures and slides; `theme_custom()` to be defined when first figure script lands.
+**Reporting:** **concise bullets; details on request.** Quote line numbers when referencing code.
+**Session logs:** post-plan, incremental, end-of-session — in `quality_reports/session_logs/`.
+**Replication:** **strict** — flag near-misses for investigation, never silently accept.
+**Effort:** **medium by default.** Override per-task: `/effort high` for paper-revision and submission-ready work, `/effort low` for routine renders and smoke tests.
 
 ---
 

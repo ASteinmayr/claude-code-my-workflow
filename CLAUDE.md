@@ -5,9 +5,12 @@
      Keep this file under ~150 lines — Claude loads it every session.
      See the guide at docs/workflow-guide.html for full documentation. -->
 
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
+**Project:** Opportunities or Benefits — Local Conditions and Refugee Labor Market Integration
+**Institution:** University of Innsbruck
+**Field:** Labor / migration economics
 **Branch:** main
+
+**Primary artifacts:** research papers (LaTeX), Beamer + Quarto slides, R-based data analysis / replication, research design (lit review, ideation, preregistration).
 
 ---
 
@@ -142,7 +145,42 @@ Enforced by `/commit` (halts + asks for override); not enforced by a git pre-com
 
 ## Current Project State
 
-| Lecture | Beamer | Quarto | Key Content |
-| --- | --- | --- | --- |
-| HelloWorld *(sample — delete when ready)* | `HelloWorld.tex` | `HelloWorld.qmd` | Minimal deck to verify setup |
-| 1: [Topic] | `Lecture01_Topic.tex` | `Lecture1_Topic.qmd` | [Brief description] |
+*No lecture decks yet.* HelloWorld stubs deleted 2026-05-18 after toolchain verification — XeLaTeX confirmed via 4-page Beamer compile of the (now-deleted) HelloWorld stub via the updated `/compile-latex` skill; Quarto 1.9.37 confirmed via `quarto --version`. When the first lecture lands, add a row table here: `| Lecture | Beamer (.tex) | Quarto (.qmd) | Key content |`.
+
+### Paper Drafts
+
+| Paper | Status | Folder |
+| --- | --- | --- |
+| Opportunities or Benefits? Local Conditions and Refugee Labor Market Integration | Drafting | [articles/Opportunities_or_Benefits__Local_Conditions_and_Refugee_Labor_Market_Integration/](articles/Opportunities_or_Benefits__Local_Conditions_and_Refugee_Labor_Market_Integration/) |
+
+---
+
+## Local Toolchain (set up 2026-05-18)
+
+| Tool | Status | Notes |
+| --- | --- | --- |
+| XeLaTeX (TeX Live 2025) | ✓ | Beamer + paper compilation works |
+| R 4.6.0 | ✓ | `/data-analysis`, `/review-r` work |
+| Python 3.11 | ✓ | Internal scripts work |
+| git | ✓ | Version control works |
+| Quarto 1.9.37 | ✓ | `/deploy`, `/qa-quarto`, `/translate-to-quarto` work |
+| gh CLI 2.92.0 | ✓ | Run `gh auth login` once to authorize PR access |
+| pdf2svg | ⚠ not yet checked | Needed for `/extract-tikz`. Install: `brew install pdf2svg` |
+
+Run `./scripts/validate-setup.sh` to re-check after installs.
+
+### Bibliography Arrangement
+
+`Bibliography_base.bib` is a **symlink** to `articles/Opportunities_or_Benefits.../bib_andreas.bib`. Per INV-5 (single bibliography), this is the canonical source — Beamer and Quarto both resolve citations through `Bibliography_base.bib`. The article folder owns the actual file. If the article folder is later removed or renamed, the symlink breaks; restore by re-pointing the symlink or by replacing it with a real file.
+
+### Working Preferences (locked in 2026-05-18)
+
+- **R paths:** plain relative (`../data/...`); no `here::here()`
+- **Seed:** `set.seed(83)` once at top of every script
+- **Tolerances:** point estimates 1e-4, SEs 1e-3; **strict near-miss policy**
+- **Effort default:** medium (`/effort high` for paper-revision and submission-ready work)
+- **Reporting:** concise bullets; details on request
+- **Palette:** deferred — Emory blue/gold defaults retained until first slide is built
+- **Domain-reviewer customization:** deferred — `/slide-excellence` will warn until lenses are field-tuned
+
+Full details in [`.claude/WORKFLOW_QUICK_REF.md`](.claude/WORKFLOW_QUICK_REF.md).

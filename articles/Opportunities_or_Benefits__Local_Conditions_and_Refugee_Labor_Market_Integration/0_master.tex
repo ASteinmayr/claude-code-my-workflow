@@ -1,0 +1,223 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper, 11pt, abstracton]{extarticle}
+%\usepackage[top=3cm,right=2.5cm,bottom=2.5cm,left=2.5cm]{geometry}
+\usepackage[top=25.4mm,bottom=25.4mm,left=25.4mm,right=25.4mm]{geometry} % Document margins
+\usepackage{setspace}\setstretch{1.5}
+\usepackage[ngerman,USenglish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[para,online,flushleft]{threeparttable}
+\usepackage{lscape}
+%\usepackage{fixltx2e}
+\usepackage{amsmath}
+\usepackage{placeins}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\newcommand{\sym}[1]{\rlap{#1}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{makeidx}
+\usepackage{comment}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\newtheorem{proposition}{Proposition}
+\newtheorem{result}{Result}
+\usepackage{graphicx}
+\usepackage{morefloats}
+\usepackage{rotfloat}
+\usepackage{float}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{lipsum}
+\usepackage{eqnarray}
+\usepackage{tabulary}
+\usepackage{tabularray}  % For talltblr, Q columns, etc.
+\UseTblrLibrary{booktabs}
+\usepackage{dcolumn}
+\usepackage{paralist}
+\usepackage{xcolor}
+\usepackage{titling}
+% If within loop
+\usepackage{pgffor}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage[space]{grffile}
+\usepackage{siunitx}
+\usepackage{makecell} %mutlilinetables
+\usepackage{enumitem}
+\usepackage{ragged2e}
+\usepackage[version=3]{mhchem}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% this line is added to remove the top line
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{\thepage}
+\newcommand\fignote[1]{\captionsetup{font=footnotesize}\caption*{#1}}
+\usepackage{float}
+\floatplacement{figure}{ht}
+\usepackage{url}
+\usepackage{import}
+\usepackage{ucs}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tikz}
+\newcommand{\inputTikZ}[2]{%  
+     \scalebox{#1}{\input{#2}}  
+	}
+\usetikzlibrary{patterns}
+\newenvironment{tikzschriftgroesse}{\begin{small}}{\end{small}}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest,compat/show suggested version=false}
+\usepgfplotslibrary{polar}
+\usepgflibrary{shapes.geometric}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations}
+\usepackage{enumitem} 
+\usepackage{framed}
+\usepackage[toc,page]{appendix}
+%only for huxtables:
+\usepackage{hhline}
+\usepackage{colortbl}
+\usepackage{placeins}
+\usepackage{titling}
+\newcommand{\logo}[1]{%
+  \postauthor{%
+  \end{tabular}\par\end{center}
+  \begin{center}
+  \vskip8.0em
+  \inclu
+  degraphics[scale=0.22]{#1}
+  \end{center}
+  \vskip4.0em}%
+}
+%in order to center the figures:
+	\makeatletter
+	\g@addto@macro{\figure}{\centering}
+	\makeatother
+%in order to center the tables:
+	\makeatletter
+	\g@addto@macro{\table}{\centering}
+	\makeatother
+
+\maxdeadcycles=1000
+
+\makeatletter\let\expandableinput\@@input\makeatother
+
+
+%Fonts (XeLaTeX with fontspec for native Unicode support — fixes € and ’ rendering)
+\usepackage{fontspec}
+\setmainfont[SmallCapsFont={Latin Modern Roman Caps}]{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}  % was: \usepackage{avant}; Latin Modern Sans is the natural companion to LM Roman/Mono and ships with TinyTeX
+\setmonofont{Latin Modern Mono}
+\setlength{\parindent}{1cm}
+
+% Set path for graphics
+
+
+%***************************************************************************************
+\usepackage[labelfont=bf]{caption} %make Table~labels bold
+
+	\usepackage{fancyhdr} % Headers and footers
+	\pagestyle{fancy} % All pages have headers and footers
+	%\fancyhead{} % Blank out the default header
+	\fancyfoot{} % Blank out the default footer
+	%\fancyhead[C]{\footnotesize{Immigrating into a Recession}} % Custom header text
+	%\fancyfoot[RO,LE]{\thepage} % Custom footer text
+	\fancyfoot[C]{\thepage} % Custom footer text center's page number
+	%\pagenumbering{Roman} %If I want Roman Numeral page numbering
+
+\usepackage{longtable}
+
+
+\title{\centering Opportunities or Benefits: Local Conditions and Refugee Labor Market Integration}
+
+\author{Katia Gallegos Torres, Andreas Steinmayr, Valentin Wett\thanks{We would like to thank  Olof Åslund, Cevat Aksoy, Frederic Docquier, Martin Fernandez, Tina Hinz, Michael Siegenthaler, Jan Stuhler, and participants of various seminars and workshops for helpful comments and suggestions. Andrea Buchacher and Karolina Hanger provided valuable research assistance. We acknowledge the financial support by the Faculty of Economics and Statistics at the University of Innsbruck. Gallegos Torres acknowledges financial support from the German Federal Ministry of Labor and Social Affairs through the Fördernetzwerk Interdisziplinäre Sozialpolitikforschung (FIS) under grant number FIS.00.00140.19. The computational results presented here have been achieved using the LEO HPC infrastructure at the University of Innsbruck. All remaining errors are our own.
+\newline Contact: Katia Gallegos Torres, IAB Nuremberg and ZEW Mannheim, \href{mailto:Katia.Gallegos-Torres@iab.de}{Katia.Gallegos-Torres@iab.de}; Andreas Steinmayr, University of Innsbruck, CESifo, Rockwool Foundation, IPL and IZA, \href{mailto:andreas.steinmayr@uibk.ac.at}{andreas.steinmayr@uibk.ac.at}; Valentin Wett}}
+
+\date{This version: \today.}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TITLE PAGE	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+\thispagestyle{empty} 
+  
+\begin{abstract} 
+\input{abstract.tex}
+\end{abstract}
+
+\vspace{1em}
+
+JEL codes: F22, J31, J61 
+
+Keywords: Immigrant integration, refugees, welfare benefits, labor demand
+
+\newpage
+\setcounter{page}{1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN PART
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{1_intro}
+\FloatBarrier
+\input{2_background}
+\FloatBarrier
+\input{3_data}
+\FloatBarrier
+\input{4_method}
+\FloatBarrier
+\input{5_results}
+\FloatBarrier
+\input{5a_mechanisms}
+\FloatBarrier
+\input{6_robustness}
+\FloatBarrier
+\input{7_discussion}
+\FloatBarrier
+\input{8_conclusion}
+%\input{main.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\bibliographystyle{ecta}
+\bibliography{bib_andreas}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{appendix}
+    \part*{Appendix}
+    \pagenumbering{roman}
+    \setcounter{page}{1} 
+    \setcounter{footnote}{0}
+    
+    \renewcommand\theequation{\Alph{section}.\arabic{equation}}
+    \setcounter{figure}{0}  \renewcommand{\thefigure}{\Alph{section}.\arabic{figure}} 
+    \setcounter{table}{0} \renewcommand{\thetable}{\Alph{section}.\arabic{table}}
+
+    \input{appendix.tex}
+    
+    \FloatBarrier
+    \FloatBarrier
+
+    \end{appendix}
+
+\end{document}
+
+
